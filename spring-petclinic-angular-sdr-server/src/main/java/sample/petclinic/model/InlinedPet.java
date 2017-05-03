@@ -3,11 +3,11 @@ package sample.petclinic.model;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.hdiv.services.SecureIdentifiable;
 import org.springframework.data.rest.core.config.Projection;
-import org.springframework.hateoas.Identifiable;
 
 @Projection(name = "inline", types = { Pet.class })
-public interface InlinedPet extends Identifiable<Integer> {
+public interface InlinedPet extends SecureIdentifiable<Integer> {
 
 	@Override
 	Integer getId();

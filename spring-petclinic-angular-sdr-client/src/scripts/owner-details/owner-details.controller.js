@@ -6,7 +6,7 @@ angular.module('ownerDetails')
 
         api()
             .follow('owners',
-	        		'owners[id:' + $stateParams.ownerId + ']'
+	        		'owners[nid:' + $stateParams.ownerId + ']'
 	        		)
 	        .withTemplateParameters({projection: 'withPets'})
 	        .getResource().result

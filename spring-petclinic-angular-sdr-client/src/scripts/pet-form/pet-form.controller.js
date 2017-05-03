@@ -20,9 +20,9 @@ angular.module('petForm')
                 if (petId) { // edit
                 	api()
                 		.follow('owners', 
-                				'owners[id:' + ownerId + ']', 
+                				'owners[nid:' + ownerId + ']', 
                 				'pets', 
-                				'pets[id:' + petId + ']',
+                				'pets[nid:' + petId + ']',
                 				'pet')
                 		.withTemplateParameters({projection: 'inline'})
                 		.getResource().result
@@ -31,7 +31,7 @@ angular.module('petForm')
                 			self.owner = pet.owner.firstName + ' ' + pet.owner.lastName;
                 			
                             self.pet.birthDate = new Date(self.pet.birthDate);
-                            self.petTypeId = '' + self.pet.type.id;
+                            self.petTypeId = '' + self.pet.type.nid;
                             
                             submitUrl = pet._links['self'].href;
                 		});
@@ -48,7 +48,7 @@ angular.module('petForm')
                 		.then(function(next){
                 			next
                 				.follow('owners',
-                    				'owners[id:' + ownerId + ']')
+                    				'owners[nid:' + ownerId + ']')
 	                    		.getResource().result
 	                    		.then(function(owner){
 	                    			self.owner = owner.firstName + ' ' + owner.lastName;
@@ -56,7 +56,7 @@ angular.module('petForm')
 	                    				name: '',
 	                    				birthDate: null
 	                    			};
-	                                self.petTypeId = '' + self.types[0].id;
+	                                self.petTypeId = '' + self.types[0].nid;
 	                                
 	                                ownerUri = owner._links['self'].href;
 	                    		});
@@ -64,9 +64,9 @@ angular.module('petForm')
                 }
         	});
 
-        var getTypeId = function(id){
+        var getTypeId = function(nid){
         	for (var i = 0; i<self.types.length; i++){
-        		if (self.types[i].id == id)
+        		if (self.types[i].nid == nid)
         			return self.types[i]._links['self'].href;
         	}
         	return null;

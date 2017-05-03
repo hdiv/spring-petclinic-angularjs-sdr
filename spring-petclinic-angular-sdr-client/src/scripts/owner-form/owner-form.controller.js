@@ -17,7 +17,7 @@ angular.module('ownerForm')
 	    		});
         } else {
         	api()
-        		.follow('owners', 'owners[id:' + ownerId + ']')
+        		.follow('owners', 'owners[nid:' + ownerId + ']')
         		.getResource().result
         		.then(function(owner){        			
         			submitLink = owner._links['owner'];

@@ -22,9 +22,9 @@ angular.module('visits')
         	.then(function(next){
         		var req2 = next
 	        		.follow('owners', 
-	        				'owners[id:' + ownerId + ']', 
+	        				'owners[nid:' + ownerId + ']', 
 	        				'pets', 
-	        				'pets[id:' + petId + ']')
+	        				'pets[nid:' + petId + ']')
 	    			.withTemplateParameters({projection: 'inline'})
 	    			.getResource();
         		
