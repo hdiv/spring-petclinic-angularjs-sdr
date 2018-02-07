@@ -36,7 +36,7 @@ public class DelegateConfig extends HdivServicesSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(final ServicesSecurityConfigBuilder builder) {
-		builder.confidentiality(false).sessionExpired().homePage("/");
+		builder.hypermediaSupport(true).confidentiality(false).sessionExpired().homePage("/");
 		builder.showErrorPageOnEditableValidation(true);
 		builder.reuseExistingPageInAjaxRequest(true);
 		builder.urlObfuscation(false);
